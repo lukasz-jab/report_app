@@ -5,11 +5,17 @@ home
 {% endblock title %}
 
 {% block content %}
-content
+
 <hr>
 <form action="" method="POST" >{% csrf_token %}
     {{ form|crispy }}
     <button type="submit" class="btn btn-primary mt-3">Search</button>
 </form>
+
+{% if sales_df %}
+    {{ sales_df|safe }}
+    <br />
+    {{ positions_df|safe }}
+{% endif %}
 {% endblock content %}
 

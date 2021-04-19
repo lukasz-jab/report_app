@@ -5,8 +5,9 @@ sales list
 
 {% block content %}
 {% for obj in object_list %}
-<a href="{{obj.get_absolute_url}}"> {{ obj }} </a>
+    <div class="card mb-3">
+        <a href="{{obj.get_absolute_url}}" class="body-card"> {{ obj }} </a>
+    </div>
 {% endfor %}
-
 {% endblock content %}
 
