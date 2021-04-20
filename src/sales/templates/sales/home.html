@@ -20,6 +20,8 @@ home
     {{ merged_df|safe }}
     <br />
     {{ df|safe }}
+    <br />
+    <img src="data:image/png;base64, {{chart|safe}}">
 {% endif %}
 {% endblock content %}
 
