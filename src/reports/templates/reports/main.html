@@ -17,7 +17,7 @@ reports
              <p class="card-text">{{ obj.remarks|truncatewords:2 }}</p>
              <a href="{{ obj.get_absolute_url }}" class="btn btn-primary">Detail View: {{ obj.name }} </a>
             <br />
-            <a href="{{ obj.get_absolute_url }}" class="btn btn-danger mt-2"> PDF </a>
+            <a href="{% url 'reports:pdf' obj.pk %}" class="btn btn-danger mt-2"> PDF </a>
          </div>
     </div>
 
