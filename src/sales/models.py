@@ -50,8 +50,8 @@ class Sale(models.Model):
         return reverse('sales:detail', kwargs={'pk': self.pk})
 
 class CSV(models.Model):
-    file_name = models.FileField(upload_to='csv')
-    activated = models.BooleanField(default=False)
+    file_name = models.CharField(max_length=100, null=True)
+    csv_file = models.FileField(upload_to='csv', null=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
