@@ -7,18 +7,21 @@ from xhtml2pdf import pisa
 from .utils import get_report_image
 from .models import Report
 from django.views.generic import ListView, DetailView
+
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import ReportForm
 # Create your views here.
 
-class ReportListView(ListView):
+class ReportListView(LoginRequiredMixin, ListView):
     model = Report
     template_name = 'reports/main.html'
 
-class ReportDetailView(DetailView):
+class ReportDetailView(LoginRequiredMixin, DetailView):
     model = Report
     template_name = 'reports/detail.html'
 
-
+@login_required
 def create_report_view(request):
     if request.is_ajax():
         name = request.POST.get('name')
@@ -44,6 +47,7 @@ def create_report_view(request):
 #
 #     return JsonResponse({})
 
+@login_required
 def render_pdf_view(request, pk):
     template_path = 'reports/pdf.html'
     #obj = Report.objects.get(id=pk)
